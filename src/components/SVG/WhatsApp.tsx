@@ -1,8 +1,12 @@
+import Link from "next/link";
 import React from "react";
 
 const WhatsApp = () => {
   return (
-    <div>
+    <Link
+      href="https://wa.me/+5491154838488"
+      className="fixed bottom-4 right-4 md:bottom-6 md:right-6 lg:bottom-4 lg:right-4 z-50 flex items-center justify-center w-14 h-14 md:w-16 md:h-16 lg:w-16 lg:h-14  transition-transform transform hover:scale-110"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
@@ -34,7 +38,7 @@ const WhatsApp = () => {
           clip-rule="evenodd"
         ></path>
       </svg>
-    </div>
+    </Link>
   );
 };
 

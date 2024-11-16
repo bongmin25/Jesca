@@ -1,4 +1,4 @@
-import Cards from "@/components/Cards/Cards";
+import Cards from "@/components/Cartas/Cartas";
 import React from "react";
 
 const Remeras = () => {

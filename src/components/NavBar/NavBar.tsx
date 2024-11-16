@@ -11,7 +11,7 @@ const NavBar = () => {
         Hasta 3 cuotas sin interes 💵
       </nav>
       <div className="flex flex-col md:flex-row items-center justify-between px-4 border-b-2 border-gray-300">
-        <Link href={"/"} className="left-section mb-2 md:mb-0 md:ml-28 ">
+        <Link href={"/"} className="left-section mb-2 md:mb-0 md:ml-28">
           <Image
             src="/jesca.jpeg"
             alt="jesca"
@@ -22,13 +22,24 @@ const NavBar = () => {
         </Link>
 
         <div className="middle-section flex flex-1 justify-center gap-4 text-sm text-center">
-          <Link className="hover:scale-105 duration-300" href={"/about"}>
-            Sobre nosotros
-          </Link>
-          <Link className="hover:scale-105 duration-300" href={"/remeras"}>
+          <Link
+            className="duration-300 hover:text-white hover:bg-black py-2 px-4 rounded-md"
+            href={"/remeras"}
+          >
             Remeras
           </Link>
-          <button className="hover:scale-105 duration-300">Buzos</button>
+          <Link
+            href={"/"}
+            className="duration-300 hover:text-white hover:bg-black py-2 px-4 rounded-md"
+          >
+            Buzos
+          </Link>
+          <Link
+            className=" duration-300 hover:text-white hover:bg-black py-2 px-4 rounded-md"
+            href={"/about"}
+          >
+            Sobre nosotros
+          </Link>
         </div>
 
         <div className="right-section flex items-center gap-4 md:gap-6">

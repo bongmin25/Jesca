@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import WhatsApp from "@/components/SVG/WhatsApp";
 import Link from "next/link";
+import ArrowDown from "@/components/SVG/ArrowDown";
 
 const About = () => {
   return (
@@ -27,12 +27,14 @@ const About = () => {
             <h2 className="text-xl font-bold text-gray-800 mt-4 text-center">
               Hacé tu pedido
             </h2>
-            {/* Icono de WhatsApp */}
-            <div className="mt-2">
-              <Link href="https://wa.me/+5491154838488">
-                <WhatsApp />
-              </Link>
-            </div>
+            <ArrowDown />
+            <Link
+              className="hover:bg-black hover:text-white duration-300 p-2 rounded"
+              href={"/remeras"}
+            >
+              EMPEZAR
+            </Link>
+            <div className="mt-2"></div>
           </div>
 
           {/* Sección derecha: descripción */}

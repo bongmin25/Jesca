@@ -3,7 +3,7 @@ import { cards } from "../../utils/cards";
 import Image from "next/image";
 import Link from "next/link";
 
-const Cards = () => {
+const Cartas = () => {
   return (
     <div className="grid gap-6 p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {cards.map((card, i) => (
@@ -27,7 +27,7 @@ const Cards = () => {
           <p className="text-gray-700 text-center mt-3">
             3 cuotas <strong>sin interés</strong> $3,500 💵
           </p>
-          <button className="text-white text-center bg-black px-4 rounded py-2 font-bold mt-3">
+          <button className="text-white text-center bg-black px-4 rounded py-2 font-bold mt-3 hover:bg-gray-600 duration-300">
             Agregar al carrito
           </button>
         </div>
@@ -36,4 +36,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default Cartas;
