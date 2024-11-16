@@ -1,12 +1,13 @@
 import React from "react";
 import { cards } from "@/utils/cards";
 import Image from "next/image";
+import ButtonMp from "@/components/ButtonMP/ButtonMp";
 
 const RemeraDetail: React.FC<{ params: { id: string } }> = ({ params }) => {
   const remera = cards.find((card) => card.id.toString() === params.id);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 max-w-screen-lg mx-auto p-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 max-w-screen-lg mx-auto p-4 gap-10">
       <div className="flex justify-center items-center p-4">
         <Image
           src={remera?.image || ""}
@@ -28,13 +29,10 @@ const RemeraDetail: React.FC<{ params: { id: string } }> = ({ params }) => {
         </p>
         <p className="text-2xl font-bold text-gray-900">$10,499</p>
         <p className="text-gray-600 mt-2">
-          3 cuotas <strong>sin interés</strong> de $10,499{" "}
+          3 cuotas <strong>sin interés</strong> de $3,500 💵
         </p>
 
-        {/* Botón comprar */}
-        <button className="mt-4 bg-black text-white py-3 px-6 rounded-lg text-xl font-semibold hover:bg-gray-800 transition-all duration-300">
-          COMPRAR
-        </button>
+        <ButtonMp />
       </div>
     </div>
   );
