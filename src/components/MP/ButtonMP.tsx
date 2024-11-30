@@ -10,7 +10,7 @@ const ButtonMP = ({ remera }: { remera: Card }) => {
   const [isCreatingPreference, setIsCreatingPreference] = useState(false);
 
   useEffect(() => {
-    const publicKey = process.env.PUBLIC_KEY_MP as string;
+    const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY_MP as string;
     if (publicKey) {
       initMercadoPago(publicKey, { locale: "es-AR" });
     }
@@ -19,17 +19,20 @@ const ButtonMP = ({ remera }: { remera: Card }) => {
   const handleBuy = async () => {
     try {
       setIsCreatingPreference(true);
-      const response = await axios.post("/create_preference", {
-        title: remera.title,
-        quantity: 1, // Por defecto
-        price: parseFloat(remera.price),
-        productId: remera.id,
-      });
+      const response = await axios.post(
+        "http://localhost:3000/create_preference",
+        {
+          title: remera.title,
+          quantity: 1, // Por defecto
+          price: parseFloat(remera.price),
+          productId: remera.id,
+        }
+      );
 
       setPreferenceId(response.data.id);
     } catch (error) {
       console.error(error);
-      toast.error("ha ocurrido un error al cargar");
+      toast.error("");
     } finally {
       setIsCreatingPreference(false);
     }
