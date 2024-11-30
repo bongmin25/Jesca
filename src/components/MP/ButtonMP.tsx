@@ -49,9 +49,11 @@ const ButtonMP = ({ remera }: { remera: Card }) => {
           {isCreatingPreference ? "Cargando..." : "COMPRAR"}
         </button>
       ) : (
-        <Wallet initialization={{ preferenceId }} />
+        <div className="w-full ">
+          <Wallet initialization={{ preferenceId }} />
+        </div>
       )}
-      <ToastContainer className="w-10 h-10" />
+      <ToastContainer />
     </div>
   );
 };
