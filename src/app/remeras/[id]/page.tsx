@@ -1,7 +1,9 @@
+// RemeraDetail.tsx
 import React from "react";
 import { cards } from "@/utils/cards";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import ButtonMP from "@/components/MP/ButtonMP";
 
 const RemeraDetail: React.FC<{ params: { id: string } }> = ({ params }) => {
   const remera = cards.find((card) => card.id.toString() === params.id);
@@ -28,13 +30,11 @@ const RemeraDetail: React.FC<{ params: { id: string } }> = ({ params }) => {
           Fabricada con materiales de alta calidad que garantizan durabilidad y
           confort.
         </p>
-        <p className="text-2xl font-bold text-gray-900">$10,499</p>
+        <p className="text-2xl font-bold text-gray-900">${remera.price}</p>
         <p className="text-gray-600 mt-2">
           3 cuotas <strong>sin interés</strong> de $3,500 💵
         </p>
-        <button className="text-white text-center bg-black px-4 rounded py-2 font-bold mt-3 hover:bg-gray-600 duration-300">
-          COMPRAR
-        </button>
+        <ButtonMP remera={remera} />
       </div>
     </div>
   );
