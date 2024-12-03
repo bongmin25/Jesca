@@ -3,7 +3,8 @@ import React from "react";
 import { cards } from "@/utils/cards";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import ButtonMP from "@/components/MP/ButtonMP";
+
+import AddToCartButton from "@/components/AddToCartButton/AddToCartButton";
 
 const RemeraDetail: React.FC<{ params: { id: string } }> = ({ params }) => {
   const remera = cards.find((card) => card.id.toString() === params.id);
@@ -34,7 +35,12 @@ const RemeraDetail: React.FC<{ params: { id: string } }> = ({ params }) => {
         <p className="text-gray-600 mt-2">
           3 cuotas <strong>sin interés</strong> de $3,500 💵
         </p>
-        <ButtonMP remera={remera} />
+        <AddToCartButton
+          id={remera.id}
+          title={remera.title}
+          image={remera.image}
+          price={remera.price}
+        />
       </div>
     </div>
   );

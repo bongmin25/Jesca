@@ -1,8 +1,8 @@
 import React from "react";
-import { cards } from "../../utils/cards";
+import { cards } from "@/utils/cards";
 import Image from "next/image";
 import Link from "next/link";
-
+import AddToCartButton from "../AddToCartButton/AddToCartButton";
 const Cartas = () => {
   return (
     <div className="grid gap-6 p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
@@ -27,9 +27,12 @@ const Cartas = () => {
           <p className="text-gray-700 text-center mt-3">
             3 cuotas <strong>sin interés</strong> $3,500 💵
           </p>
-          <button className="text-white text-center bg-black px-4 rounded py-2 font-bold mt-3 hover:bg-gray-600 duration-300">
-            Agregar al carrito
-          </button>
+          <AddToCartButton
+            id={card.id}
+            title={card.title}
+            image={card.image}
+            price={10499}
+          />
         </div>
       ))}
     </div>

@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import { Card } from "@/utils/interfaces/cards";
+import { Card } from "@/utils/interfaces/interfaces";
 
-const ButtonMP = ({ remera }: { remera: Card }) => {
+const ButtonMP = ({ producto }: { producto: Card }) => {
   const [preferenceId, setPreferenceId] = useState<string | null>(null);
   const [isCreatingPreference, setIsCreatingPreference] = useState(false);
 
@@ -22,10 +22,11 @@ const ButtonMP = ({ remera }: { remera: Card }) => {
       const response = await axios.post(
         "http://localhost:3000/create_preference",
         {
-          title: remera.title,
-          quantity: 1, // Por defecto
-          price: parseFloat(remera.price),
-          productId: remera.id,
+          productId: producto.id,
+          title: producto.title,
+          quantity: 1,
+          image: producto.image,
+          price: parseFloat(producto.price),
         }
       );
 
@@ -41,15 +42,17 @@ const ButtonMP = ({ remera }: { remera: Card }) => {
   return (
     <div className=" flex mt-4">
       {!preferenceId ? (
-        <button
-          onClick={handleBuy}
-          className="w-full text-white text-center bg-black px-4 rounded py-2 font-bold mt-3 hover:bg-gray-600 duration-300"
-          disabled={isCreatingPreference}
-        >
-          {isCreatingPreference ? "Cargando..." : "COMPRAR"}
-        </button>
+        <div className="w-full">
+          <button
+            onClick={handleBuy}
+            className="text-white text-center bg-black px-6 py-3 rounded-md  mt-3 hover:bg-gray-600 duration-300 mb-4"
+            disabled={isCreatingPreference}
+          >
+            {isCreatingPreference ? "Cargando..." : "Proceder al pago"}
+          </button>
+        </div>
       ) : (
-        <div className="w-full ">
+        <div className="w-full">
           <Wallet initialization={{ preferenceId }} />
         </div>
       )}
