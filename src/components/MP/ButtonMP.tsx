@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import { Card } from "@/utils/interfaces/interfaces";
+import { CartItem } from "@/utils/interfaces/interfaces";
 
-const ButtonMP = ({ producto }: { producto: Card }) => {
+const ButtonMP = ({ cart }: { cart: CartItem[] }) => {
   const [preferenceId, setPreferenceId] = useState<string | null>(null);
   const [isCreatingPreference, setIsCreatingPreference] = useState(false);
 
@@ -22,25 +22,26 @@ const ButtonMP = ({ producto }: { producto: Card }) => {
       const response = await axios.post(
         "http://localhost:3000/create_preference",
         {
-          productId: producto.id,
-          title: producto.title,
-          quantity: 1,
-          image: producto.image,
-          price: parseFloat(producto.price),
+          items: cart.map((item) => ({
+            id: item.id,
+            title: item.title,
+            quantity: item.quantity,
+            price: item.price,
+          })),
         }
       );
 
       setPreferenceId(response.data.id);
     } catch (error) {
       console.error(error);
-      toast.error("");
+      toast.error("Error al crear la preferencia de pago");
     } finally {
       setIsCreatingPreference(false);
     }
   };
 
   return (
-    <div className=" flex mt-4">
+    <div className="flex mt-4">
       {!preferenceId ? (
         <div className="w-full">
           <button
@@ -52,7 +53,7 @@ const ButtonMP = ({ producto }: { producto: Card }) => {
           </button>
         </div>
       ) : (
-        <div className="w-full">
+        <div className="flex w-full justify-center">
           <Wallet initialization={{ preferenceId }} />
         </div>
       )}

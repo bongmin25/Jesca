@@ -4,18 +4,32 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useCart } from "@/components/Context/CartContext";
 import ButtonMP from "@/components/MP/ButtonMP";
+import { CartItem } from "@/utils/interfaces/interfaces";
+import Delete from "@/components/SVG/Delete";
 
-const Carrito = () => {
+const Carrito: React.FC = () => {
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
     useCart();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [productToDelete, setProductToDelete] = useState<number | null>(null);
 
   useEffect(() => {
     setIsLoading(false);
   }, []);
 
+  const openModal = (productId: number) => {
+    setProductToDelete(productId);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setProductToDelete(null);
+    setModalOpen(false);
+  };
+
   const totalPrice = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum: number, item: CartItem) => sum + item.price * item.quantity,
     0
   );
 
@@ -49,7 +63,7 @@ const Carrito = () => {
         <h1 className="font-bold text-3xl md:text-4xl text-gray-800 mb-10 mt-5 text-center">
           Tu Carrito
         </h1>
-        {cart.map((item) => (
+        {cart.map((item: CartItem) => (
           <div
             key={item.id}
             className="flex justify-between items-center border-b py-4"
@@ -89,18 +103,40 @@ const Carrito = () => {
               <p className="font-semibold">
                 Total: ${item.price * item.quantity}
               </p>
-              <button
-                onClick={() => removeFromCart(item.id)}
-                className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 mt-2"
-              >
-                Eliminar
-              </button>
+
+              <Delete onClick={() => openModal(item.id)} />
             </div>
           </div>
         ))}
+        {modalOpen && (
+          <div className="absolute bg-gray-800 bg-opacity-50 inset-0 flex items-center justify-center">
+            <div className="bg-white p-4 rounded-md shadow-lg text-center">
+              <p className="mb-4">¿Eliminar producto?</p>
+              <div className="flex justify-around">
+                <button
+                  onClick={() => {
+                    if (productToDelete !== null) {
+                      removeFromCart(productToDelete);
+                    }
+                    closeModal();
+                  }}
+                  className="bg-red-500 text-white px-5 py-2 rounded-md hover:bg-red-600"
+                >
+                  SI
+                </button>
+                <button
+                  onClick={closeModal}
+                  className="bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-400"
+                >
+                  NO
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="mt-6 text-center">
           <h2 className="text-xl font-bold">Total: ${totalPrice} ARS</h2>
-          <ButtonMP producto={cart} />
+          <ButtonMP cart={cart} />
         </div>
       </div>
     </div>

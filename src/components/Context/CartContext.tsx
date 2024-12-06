@@ -14,19 +14,24 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    try {
-      const storedCart = localStorage.getItem("cart");
-      return storedCart ? JSON.parse(storedCart) : [];
-    } catch (error) {
-      console.error("Error al cargar el carrito desde LocalStorage:", error);
-      return [];
-    }
-  });
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
     try {
-      localStorage.setItem("cart", JSON.stringify(cart));
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        setCart(JSON.parse(storedCart));
+      }
+    } catch (error) {
+      console.error("Error al cargar el carrito desde LocalStorage:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      if (cart.length > 0) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
     } catch (error) {
       console.error("Error al guardar el carrito en LocalStorage:", error);
     }
