@@ -33,7 +33,7 @@ const RemeraDetail: React.FC<{ params: { id: string } }> = ({ params }) => {
         </p>
         <p className="text-2xl font-bold text-gray-900">${remera.price}</p>
         <p className="text-gray-600 mt-2">
-          3 cuotas <strong>sin interés</strong> de $3,500 💵
+          3 cuotas <strong>sin interés</strong> de $3,500
         </p>
         <AddToCartButton
           id={remera.id}

@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="bg-black text-white text-sm p-2 text-center font-bold">
-        Hasta 3 cuotas sin interes 💵
+        JESCA{" "}
       </nav>
       <div className="flex flex-col md:flex-row items-center justify-between px-4 border-b-2 border-gray-300">
         <Link href={"/"} className="left-section mb-2 md:mb-0 md:ml-28">
