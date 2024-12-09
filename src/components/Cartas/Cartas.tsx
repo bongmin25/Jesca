@@ -7,10 +7,8 @@ import AddToCartButton from "../AddToCartButton/AddToCartButton";
 const Cartas = () => {
   return (
     <div className="max-w-screen-xl mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold text-gray-800 text-center">
-        Remeras Oversize
-      </h1>
-      <p className="text-center text-gray-600 mt-4">
+      <h1 className="text-3xl font-bold text-gray-800 ">Remeras Oversize</h1>
+      <p className=" text-gray-600 mt-4">
         Elegí tu remera JESCA, estilo sin esfuerzo, comodidad total
       </p>
       <div className="grid gap-6 mt-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
@@ -20,7 +18,7 @@ const Cartas = () => {
             className="flex flex-col items-center shadow-lg rounded-lg p-4 border hover:shadow-xl transition-shadow duration-300"
           >
             <Link href={`/remeras/${card.id}`}>
-              <div className="relative w-full h-60">
+              <div className="relative lg:h-60">
                 <Image
                   src={card.image}
                   alt={card.title}
@@ -30,7 +28,7 @@ const Cartas = () => {
                 />
               </div>
             </Link>
-            <p className="text-gray-700 text-center mt-60">{card.title}</p>
+            <p className="text-gray-700 text-center lg:mt-60">{card.title}</p>
             <p className="text-gray-800 text-center mt-2 font-bold text-lg">
               $10,499
             </p>
