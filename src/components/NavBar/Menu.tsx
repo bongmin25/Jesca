@@ -42,11 +42,11 @@ const Menu = () => {
               Remeras
             </Link>
             <Link
-              href="/"
+              href="/nueva-edicion"
               className="text-lg font-semibold hover:text-gray-400 transition duration-300"
               onClick={() => setIsMenuOpen(false)} // Cerrar menú al hacer clic
             >
-              Buzos
+              Nueva edición
             </Link>
             <Link
               href="/about"

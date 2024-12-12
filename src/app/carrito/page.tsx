@@ -6,6 +6,7 @@ import { useCart } from "@/components/Context/CartContext";
 import ButtonMP from "@/components/MP/ButtonMP";
 import { CartItem } from "@/utils/interfaces/interfaces";
 import Delete from "@/components/SVG/Delete";
+import Select from "@/components/SVG/Select";
 
 const Carrito: React.FC = () => {
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
@@ -49,9 +50,12 @@ const Carrito: React.FC = () => {
         </h2>
         <Link
           href={"/remeras"}
-          className="bg-black text-white text-sm md:text-base px-6 py-3 rounded-md hover:bg-gray-600 duration-300"
+          className="flex items-center bg-black text-white text-sm md:text-base px-6 py-3 rounded-md hover:bg-gray-600 justify-center duration-300 w-56 scroll-smooth"
         >
-          COMPRAR
+          COMPRAR AHORA
+          <span className="ml-2">
+            <Select />
+          </span>
         </Link>
       </div>
     );

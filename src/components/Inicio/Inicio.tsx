@@ -27,7 +27,7 @@ export default function Inicio() {
           </h2>
           <Link
             href={"/remeras"}
-            className="flex items-center bg-black text-white text-sm md:text-base px-6 py-3 rounded-md hover:bg-gray-600 justify-center duration-300 w-56"
+            className="flex items-center bg-black text-white text-sm md:text-base px-6 py-3 rounded-md hover:bg-gray-600 justify-center duration-300 w-56 scroll-smooth"
           >
             COMPRAR AHORA
             <span className="ml-2">
