@@ -23,7 +23,7 @@ export default function Inicio() {
             <br />
             <strong>Nueva colección</strong>
             <br />
-            Sometimes being wrong is write
+            Sometimes being wrong is right
           </h2>
           <Link
             href={"/remeras"}

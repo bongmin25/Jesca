@@ -48,7 +48,6 @@ const Cartas = () => {
                   title={card.title}
                   image={card.image}
                   price={10499}
-                  size={card.size}
                 />
               </div>
             </div>

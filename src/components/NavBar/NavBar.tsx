@@ -34,10 +34,10 @@ const NavBar = () => {
             Remeras
           </Link>
           <Link
-            href="/"
+            href="/nueva-edicion"
             className=" transition duration-300 px-4 py-2 hover:bg-black hover:text-white rounded"
           >
-            Buzos
+            Nueva edición
           </Link>
           <Link
             href="/about"

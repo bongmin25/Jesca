@@ -54,7 +54,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
       <div className="flex flex-col items-center space-y-2">
         {/* Selector de talles con botones */}
         <div className="flex space-x-4 mb-3">
-          {["L", "XL"].map((option) => (
+          {["S", "M"].map((option) => (
             <button
               key={option}
               onClick={() => {

@@ -4,7 +4,6 @@ export interface AddToCartButtonProps {
   title: string;
   image: string;
   price: number;
-  size: string;
 }
 
 // Interfaces de CartContext
