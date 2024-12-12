@@ -2,10 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowDown from "@/components/SVG/ArrowDown";
+import IG from "@/components/SVG/IG";
+import X from "@/components/SVG/X";
 
 const About = () => {
   return (
-    <div className="bg-gray-100 p-20">
+    <div className="bg-gray-100 p-20 min-h-screen">
       <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
         {/* Título principal */}
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
@@ -56,6 +58,24 @@ const About = () => {
               Únete a nuestra comunidad y descubre cómo Jesca puede ser parte de
               tu estilo diario.
             </p>
+            <p>
+              <strong>Seguinos en nuestras redes sociales:</strong>
+            </p>
+            <div className="flex p-2 gap-3 justify-center">
+              <Link
+                className="bg-black text-white p-2 rounded-md"
+                href="https://www.instagram.com/jesca.clothes/"
+              >
+                <IG />
+              </Link>
+              <Link
+                className="bg-black text-white p-2 rounded-md"
+                href="https://www.instagram.com/jesca.clothes/"
+              >
+                <X />
+              </Link>
+            </div>
+            <div className="flex justify-center">© 2024 jesca Argentina</div>
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ const Cartas = () => {
                 alt={card.title}
                 width={500}
                 height={500}
-                className="object-cover w-full h-72 lg:h-96 transition-opacity duration-300 group-hover:opacity-0"
+                className="object-cover w-full h-72 lg:h-96 transition-opacity duration-300 hover:opacity-0"
               />
               {/* Imagen de hover */}
               <Image
@@ -32,22 +32,23 @@ const Cartas = () => {
                 alt={card.title}
                 width={500}
                 height={500}
-                className="absolute top-0 left-0 object-cover w-full h-72 lg:h-96 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                className="absolute top-0 left-0 object-cover w-full h-72 lg:h-96 opacity-0 transition-opacity duration-300 hover:opacity-100"
               />
             </Link>
 
             <div className="p-4">
               <p className="text-lg font-medium text-gray-800">{card.title}</p>
               <p className="text-lg font-bold text-gray-900 mt-2">$10,499</p>
-              <p className="text-sm text-gray-500 mt-1">
-                3 cuotas <strong>sin interés</strong> $3,500
+              <p className="text-sm text-gray-500 mt-2">
+                Selecciona un talle:
               </p>
-              <div className="mt-4 text-center">
+              <div className="mt-3 text-center">
                 <AddToCartButton
                   id={card.id}
                   title={card.title}
                   image={card.image}
                   price={10499}
+                  size={card.size}
                 />
               </div>
             </div>

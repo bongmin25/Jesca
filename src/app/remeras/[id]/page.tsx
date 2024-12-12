@@ -33,14 +33,17 @@ const RemeraDetail: React.FC<{ params: { id: string } }> = ({ params }) => {
         </p>
         <p className="text-2xl font-bold text-gray-900">${remera.price}</p>
         <p className="text-gray-600 mt-2">
-          3 cuotas <strong>sin interés</strong> de $3,500
+          Selecciona un talle:
         </p>
-        <AddToCartButton
-          id={remera.id}
-          title={remera.title}
-          image={remera.image}
-          price={remera.price}
-        />
+        <div className="">
+          <AddToCartButton
+            id={remera.id}
+            title={remera.title}
+            image={remera.image}
+            price={remera.price}
+            size={remera.size}
+          />
+        </div>
       </div>
     </div>
   );

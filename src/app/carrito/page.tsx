@@ -79,6 +79,8 @@ const Carrito: React.FC = () => {
               <div className="md:ml-10">
                 <h2 className="text-lg font-semibold mb-4">{item.title}</h2>
                 <p className="text-gray-600">Precio: ${item.price}</p>
+                <p className="text-gray-600">Talle: {item.size}</p>{" "}
+                {/* Talle */}
                 <div className="flex items-center mt-2">
                   <span className="mr-2">Cantidad:</span>
                   <button
@@ -103,13 +105,12 @@ const Carrito: React.FC = () => {
               <p className="font-semibold">
                 Total: ${item.price * item.quantity}
               </p>
-
               <Delete onClick={() => openModal(item.id)} />
             </div>
           </div>
         ))}
         {modalOpen && (
-          <div className="absolute bg-gray-800 bg-opacity-50 inset-0 flex items-center justify-center">
+          <div className="fixed bg-gray-800 bg-opacity-50 inset-0 flex items-center justify-center h-screen">
             <div className="bg-white p-4 rounded-md shadow-lg text-center">
               <p className="mb-4">¿Eliminar producto?</p>
               <div className="flex justify-around">

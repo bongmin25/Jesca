@@ -4,6 +4,7 @@ export interface AddToCartButtonProps {
   title: string;
   image: string;
   price: number;
+  size: string;
 }
 
 // Interfaces de CartContext
@@ -12,6 +13,7 @@ export interface CartItem {
   title: string;
   image: string;
   price: number;
+  size: string;
   quantity: number;
 }
 
@@ -22,7 +24,6 @@ export interface CartContextType {
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
 }
-
 
 // Interface de Card
 export interface Card {

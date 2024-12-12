@@ -40,10 +40,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const addToCart = (item: CartItem) => {
     console.log("Item agregado al carrito:", item);
     setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+      const existingItem = prevCart.find(
+        (cartItem) => cartItem.id === item.id && cartItem.size === item.size // Diferenciar por talle
+      );
       if (existingItem) {
         return prevCart.map((cartItem) =>
-          cartItem.id === item.id
+          cartItem.id === item.id && cartItem.size === item.size
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );

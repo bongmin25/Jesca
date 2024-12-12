@@ -1,60 +1,59 @@
 import Bag from "@/components/SVG/Bag";
-import Lupa from "@/components/SVG/Lupa";
 import User from "@/components/SVG/User";
 import Image from "next/image";
 import Link from "next/link";
+import Menu from "./Menu";
 
 const NavBar = () => {
   return (
     <>
+      {/* Barra superior fija */}
       <nav className="bg-black text-white text-sm p-2 text-center font-bold">
-        JESCA{" "}
+        JESCA
       </nav>
-      <div className="flex flex-col md:flex-row items-center justify-between px-4 border-b-2 border-gray-300">
-        <Link href={"/"} className="left-section mb-2 md:mb-0 md:ml-28">
+
+      {/* Contenedor principal */}
+      <div className="flex items-center justify-between px-8 py-2 bg-white shadow-md md:flex-row md:items-center">
+        {/* Logo */}
+        <Link href={"/"}>
           <Image
             src="/jesca.jpeg"
             alt="jesca"
-            width={100}
-            height={100}
-            className="mr-0 md:mr-20"
+            width={80}
+            height={80}
+            className="rounded-full"
           />
         </Link>
 
-        <div className="middle-section flex flex-1 justify-center gap-4 text-sm text-center">
+        {/* Menú de navegación en pantallas grandes */}
+        <nav className="hidden md:flex flex-1 justify-center gap-8 text-sm">
           <Link
-            className="duration-300 hover:text-white hover:bg-black py-2 px-4 rounded-md"
-            href={"/remeras"}
+            href="/remeras"
+            className="px-4 py-2 hover:bg-black hover:text-white rounded transition duration-300"
           >
             Remeras
           </Link>
           <Link
-            href={"/"}
-            className="duration-300 hover:text-white hover:bg-black py-2 px-4 rounded-md"
+            href="/"
+            className=" transition duration-300 px-4 py-2 hover:bg-black hover:text-white rounded"
           >
             Buzos
           </Link>
           <Link
-            className=" duration-300 hover:text-white hover:bg-black py-2 px-4 rounded-md"
-            href={"/about"}
+            href="/about"
+            className="px-4 py-2 hover:bg-black hover:text-white rounded transition duration-300"
           >
             Sobre nosotros
           </Link>
-        </div>
+        </nav>
 
-        <div className="right-section flex items-center gap-4 md:gap-6">
-          <div className="flex items-center gap-2">
-            <Lupa />
-            <input
-              className="p-2 bg-slate-200 rounded-md hidden md:block"
-              type="text"
-              placeholder="Buscar"
-            />
-          </div>
-          <div className="flex gap-2">
-            <User />
-            <Bag />
-          </div>
+        {/* Menú hamburguesa para móviles */}
+        <Menu />
+
+        {/* Iconos de usuario y carrito */}
+        <div className="flex items-center gap-6">
+          <User />
+          <Bag />
         </div>
       </div>
     </>

@@ -12,12 +12,20 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
 }) => {
   const { addToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
-  const [showNotification, setShowNotification] = useState(false); // Estado para la notificación
+  const [showNotification, setShowNotification] = useState(false);
+  const [size, setSize] = useState<string>(""); // Estado para el talle
+  const [hasError, setHasError] = useState<boolean>(false); // Estado de error
 
   const handleAddToCart = () => {
-    addToCart({ id, title, image, price, quantity: 1 });
+    if (!size) {
+      setHasError(true); // Activa el estado de error si no se selecciona un talle
+      return;
+    }
+
+    setHasError(false); // Limpia el estado de error si se selecciona un talle
+    addToCart({ id, title, image, price, size, quantity: 1 }); // Incluye el talle
     setIsAdded(true);
-    setShowNotification(true); 
+    setShowNotification(true);
 
     setTimeout(() => {
       setIsAdded(false);
@@ -43,26 +51,49 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
           <Bag />
         </div>
       )}
-      <button
-        onClick={handleAddToCart}
-        className={`relative text-center px-4 py-2 rounded font-bold mt-3 duration-500
-          ${
-            isAdded
-              ? "bg-slate-300 text-white"
-              : "bg-black text-white hover:bg-gray-700"
-          }
-        `}
-      >
-        <span
-          className={`absolute inset-0 bg-slate-300 transition-all duration-500 ease-in-out transform rounded
-            ${isAdded ? "scale-x-100" : "scale-x-0"}
+      <div className="flex flex-col items-center space-y-2">
+        {/* Selector de talles con botones */}
+        <div className="flex space-x-4 mb-3">
+          {["L", "XL"].map((option) => (
+            <button
+              key={option}
+              onClick={() => {
+                setSize(option);
+                setHasError(false); // Limpia el error al seleccionar un talle
+              }}
+              className={`w-10 h-10 border-2 rounded text-center font-bold ${
+                size === option
+                  ? "bg-black text-white border-black"
+                  : `bg-white text-black ${
+                      hasError ? "border-red-500" : "border-gray-400"
+                    }`
+              } hover:border-black transition-colors duration-300`}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+        <button
+          onClick={handleAddToCart}
+          className={`relative text-center w-full px-4 py-2 rounded font-bold duration-500
+            ${
+              isAdded
+                ? "bg-slate-300 text-white"
+                : "bg-black text-white hover:bg-gray-700"
+            }
           `}
-        ></span>
+        >
+          <span
+            className={`absolute inset-0 bg-slate-300 transition-all duration-500 ease-in-out transform rounded
+              ${isAdded ? "scale-x-100" : "scale-x-0"}
+            `}
+          ></span>
 
-        <span className={`relative ${isAdded ? "text-black" : ""}`}>
-          {isAdded ? "Agregado" : "Agregar al carrito"}
-        </span>
-      </button>
+          <span className={`relative ${isAdded ? "text-black" : ""}`}>
+            {isAdded ? "Agregado" : "Agregar al carrito"}
+          </span>
+        </button>
+      </div>
     </>
   );
 };
