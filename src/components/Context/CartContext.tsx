@@ -41,7 +41,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     console.log("Item agregado al carrito:", item);
     setCart((prevCart) => {
       const existingItem = prevCart.find(
-        (cartItem) => cartItem.id === item.id && cartItem.size === item.size // Diferenciar por talle
+        (cartItem) => cartItem.id === item.id && cartItem.size === item.size 
       );
       if (existingItem) {
         return prevCart.map((cartItem) =>
@@ -55,7 +55,16 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const removeFromCart = (id: number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    setCart((prevCart) => {
+      const updatedCart = prevCart.filter((item) => item.id !== id);
+      try {
+        // Actualiza el carrito en el localStorage después de eliminar el producto
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+      } catch (error) {
+        console.error("Error al guardar el carrito actualizado en LocalStorage:", error);
+      }
+      return updatedCart;
+    });
   };
 
   const increaseQuantity = (id: number) => {
@@ -78,6 +87,17 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     );
   };
 
+  // Función para limpiar el carrito
+  const clearCart = () => {
+    setCart([]);
+    try {
+      // Elimina el carrito del localStorage
+      localStorage.removeItem("cart");
+    } catch (error) {
+      console.error("Error al eliminar el carrito del LocalStorage:", error);
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -86,6 +106,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         removeFromCart,
         increaseQuantity,
         decreaseQuantity,
+        clearCart,  
       }}
     >
       {children}

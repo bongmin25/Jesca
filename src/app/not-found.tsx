@@ -5,7 +5,7 @@ import React from "react";
 
 const notFound = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mt-20">
       <Image
         width={800}
         height={800}

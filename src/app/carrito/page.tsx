@@ -1,23 +1,38 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCart } from "@/components/Context/CartContext";
-import ButtonMP from "@/components/MP/ButtonMP";
 import { CartItem } from "@/utils/interfaces/interfaces";
+import Link from "next/link";
+import ButtonMP from "@/components/MP/ButtonMP";
+import Image from "next/image";
 import Delete from "@/components/SVG/Delete";
 import Select from "@/components/SVG/Select";
 
 const Carrito: React.FC = () => {
-  const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
-    useCart();
+  const {
+    cart,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    clearCart,
+  } = useCart();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [productToDelete, setProductToDelete] = useState<number | null>(null);
+  const [purchaseCompleted, setPurchaseCompleted] = useState<boolean>(false);
 
   useEffect(() => {
     setIsLoading(false);
-  }, []);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get("status");
+
+    // Solo actualizamos el estado de la compra si no ha sido completado antes
+    if (status === "success" && !purchaseCompleted) {
+      setPurchaseCompleted(true);
+      clearCart(); // Limpiar el carrito cuando la compra sea exitosa
+    }
+  }, [purchaseCompleted, clearCart]);
 
   const openModal = (productId: number) => {
     setProductToDelete(productId);
@@ -36,6 +51,29 @@ const Carrito: React.FC = () => {
 
   if (isLoading) {
     return null;
+  }
+
+  if (purchaseCompleted) {
+    return (
+      <div className="flex flex-col justify-center items-center lg:mt-36 px-4">
+        <h1 className="font-bold text-3xl md:text-4xl text-black mb-4 text-center">
+          ¡Muchas gracias por tu compra!
+        </h1>
+        <p className="text-gray-600 text-lg md:text-xl mb-6">
+          Tu compra ha sido realizada con éxito. Nos encargaremos de todo el
+          proceso de envío.
+        </p>
+        <Link
+          href="/"
+          className="flex items-center bg-green-500 text-white text-sm md:text-base px-6 py-3 rounded-md hover:bg-green-700 justify-center duration-300 w-62 scroll-smooth"
+        >
+          VOLVER A LA PÁGINA PRINCIPAL
+          <span className="ml-2">
+            <Select />
+          </span>
+        </Link>
+      </div>
+    );
   }
 
   if (cart.length === 0) {
@@ -83,8 +121,7 @@ const Carrito: React.FC = () => {
               <div className="md:ml-10">
                 <h2 className="text-lg font-semibold mb-4">{item.title}</h2>
                 <p className="text-gray-600">Precio: ${item.price}</p>
-                <p className="text-gray-600">Talle: {item.size}</p>{" "}
-                {/* Talle */}
+                <p className="text-gray-600">Talle: {item.size}</p>
                 <div className="flex items-center mt-2">
                   <span className="mr-2">Cantidad:</span>
                   <button
@@ -127,20 +164,22 @@ const Carrito: React.FC = () => {
                   }}
                   className="bg-red-500 text-white px-5 py-2 rounded-md hover:bg-red-600"
                 >
-                  SI
+                  Sí
                 </button>
                 <button
                   onClick={closeModal}
-                  className="bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-400"
+                  className="bg-gray-300 px-5 py-2 rounded-md hover:bg-gray-400"
                 >
-                  NO
+                  No
                 </button>
               </div>
             </div>
           </div>
         )}
-        <div className="mt-6 text-center">
-          <h2 className="text-xl font-bold">Total: ${totalPrice} ARS</h2>
+        <div className="flex justify-between mt-4">
+          <p className="text-xl font-semibold">Total: ${totalPrice}</p>
+        </div>
+        <div className="mt-6 text-center flex justify-center">
           <ButtonMP cart={cart} />
         </div>
       </div>
