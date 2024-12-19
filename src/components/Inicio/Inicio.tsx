@@ -7,19 +7,16 @@ export default function Inicio() {
     <div>
       {/* Header con una sola imagen y el texto + botón encima */}
       <div className="relative h-[70vh]">
-        {" "}
-        {/* Altura ajustada aquí */}
         <Image
-          src="/portada1.jpeg" // Cambia esta ruta por la tuya
+          src="/BLANCA PORTADA PRINCIPAL.jpg"
           alt="Imagen de portada"
           fill
           className="object-cover"
         />
         {/* Texto y botón sobre la imagen */}
-        <div className="absolute top-[18%] left-1/3 lg:top-1/3 lg:left-1/4 transform -translate-x-1/2 -translate-y-1/2 ">
+        <div className="absolute top-[18%] right-[10%] lg:top-1/2 transform -translate-y-1/2">
           <h2 className="text-black text-lg md:text-xl mb-6 max-w-lg">
-            <strong>JESCA</strong>
-            , estilo sin esfuerzo.
+            <strong>JESCA</strong>, estilo sin esfuerzo.
             <br />
             <strong>Nueva colección</strong>
             <br />
@@ -39,30 +36,53 @@ export default function Inicio() {
 
       {/* Sección de imágenes debajo */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-8">
-        <div className="relative h-60">
+        <div className="relative h-auto aspect-[3/4]">
           <Image
-            src="/portada2.jpeg" // Cambia esta ruta por la tuya
+            src="/MARRON PORTADA 1.jpg"
             alt="Imagen 2"
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </div>
-        <div className="relative h-60">
+        <div className="relative h-auto aspect-[3/4]">
           <Image
-            src="/portada3.jpeg" // Cambia esta ruta por la tuya
+            src="/BLANCA PORTADA 1.jpg"
             alt="Imagen 3"
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </div>
-        <div className="relative h-60">
+        <div className="relative h-auto aspect-[3/4]">
           <Image
-            src="/portada4.jpeg" // Cambia esta ruta por la tuya
+            src="/NEGRA PORTADA 1.jpg"
             alt="Imagen 4"
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </div>
+      </div>
+
+      {/* Sección informativa sobre Jesca */}
+      <div className="flex flex-col bg-gray-100 p-8 justify-center items-center">
+        <h3 className="text-2xl font-bold mb-4 text-center justify-center">
+          {" "}
+          Sometimes being wrong is right
+        </h3>
+        <p className="text-lg mb-4 text-center w-1/2">
+          En Jesca, creemos que todas las emociones son válidas y forman parte
+          de la experiencia humana. Te invitamos a abrazar tus sentimientos, sin
+          vergüenza, y a compartirlos con el mundo. Nuestras prendas están
+          diseñadas para acompañarte con comodidad y tranquilidad en cada
+          momento, permitiéndote ser auténtico y expresar lo que sientes. Como
+          dijo BOOKEY: -Permítete sentir y compartir tus emociones.
+        </p>
+        <Image
+          width={200}
+          height={200}
+          src="/jesca.jpeg"
+          alt="jesca"
+          className="object-cover rounded-lg"
+        />
       </div>
     </div>
   );

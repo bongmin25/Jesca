@@ -75,7 +75,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
         </div>
         <button
           onClick={handleAddToCart}
-          className={`relative text-center w-full px-4 py-2 rounded font-bold duration-500
+          className={`relative text-center w-[80%] px-4 py-2 rounded font-bold duration-500
             ${
               isAdded
                 ? "bg-slate-300 text-white"

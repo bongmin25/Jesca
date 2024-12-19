@@ -11,37 +11,38 @@ const Cartas = () => {
       <p className="text-gray-600 mt-4">
         Elegí tu remera JESCA, estilo sin esfuerzo, comodidad total
       </p>
-      <div className="grid gap-2 mt-10 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-2 mt-10 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3">
         {cards.map((card, i) => (
           <div
             key={i}
-            className="group flex flex-col bg-white shadow-lg rounded-lg overflow-hidden border hover:shadow-xl transition-shadow duration-300"
+            className="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden border hover:shadow-xl transition-shadow duration-300"
           >
-            <Link href={`/remeras/${card.id}`} className="relative block">
+            {/* Contenedor de la imagen con hover */}
+            <Link href={`/remeras/${card.id}`} className="relative block group">
               {/* Imagen principal */}
-              <Image
-                src={card.image}
-                alt={card.title}
-                width={500}
-                height={500}
-                className="object-cover w-full h-72 lg:h-96 transition-opacity duration-300 hover:opacity-0"
-              />
-              {/* Imagen de hover */}
-              <Image
-                src="/portada1.jpeg" // Nueva propiedad en tus datos
-                alt={card.title}
-                width={500}
-                height={500}
-                className="absolute top-0 left-0 object-cover w-full h-72 lg:h-96 opacity-0 transition-opacity duration-300 hover:opacity-100"
-              />
+              <div className="relative">
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  width={700}
+                  height={700}
+                  className="object-contain w-full h-72 lg:h-96 transition-opacity duration-300 group-hover:opacity-0"
+                />
+                {/* Imagen de hover */}
+                <Image
+                  src={card.hoverImage}
+                  alt={card.title}
+                  width={700}
+                  height={700}
+                  className="absolute top-0 left-0 object-contain w-full h-72 lg:h-96 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
+              </div>
             </Link>
 
             <div className="p-4">
               <p className="text-lg font-medium text-gray-800">{card.title}</p>
-              <p className="text-lg font-bold text-gray-900 mt-2">$10,499</p>
-              <p className="text-sm text-gray-500 mt-2">
-                Selecciona un talle:
-              </p>
+              <p className="text-lg font-bold text-gray-900 mt-2">${card.price}</p>
+              <p className="text-sm text-gray-500 mt-2">Selecciona un talle:</p>
               <div className="mt-3 text-center">
                 <AddToCartButton
                   id={card.id}
