@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import Select from "../SVG/Select";
+import { motion } from "framer-motion";
 
 export default function Inicio() {
   return (
@@ -34,41 +36,38 @@ export default function Inicio() {
         </div>
       </div>
 
-      {/* Sección de imágenes debajo */}
+      {/* Sección de imágenes con animación */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-8">
-        <div className="relative h-auto aspect-[3/4]">
-          <Image
-            src="/MARRON PORTADA 1.jpg"
-            alt="Imagen 2"
-            fill
-            className="object-contain"
-          />
-        </div>
-        <div className="relative h-auto aspect-[3/4]">
-          <Image
-            src="/BLANCA PORTADA 1.jpg"
-            alt="Imagen 3"
-            fill
-            className="object-contain"
-          />
-        </div>
-        <div className="relative h-auto aspect-[3/4]">
-          <Image
-            src="/NEGRA PORTADA 1.jpg"
-            alt="Imagen 4"
-            fill
-            className="object-contain"
-          />
-        </div>
+        {[
+          "/MARRON PORTADA 1.jpg",
+          "/BLANCA PORTADA 1.jpg",
+          "/NEGRA PORTADA 1.jpg",
+        ].map((src, index) => (
+          <motion.div
+            key={src}
+            className="relative h-auto aspect-[3/4]"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, delay: index * 1 }}
+          >
+            <Link href={"/remeras"}>
+              <Image
+                src={src}
+                alt={`Imagen ${index + 2}`}
+                fill
+                className="object-contain hover:scale-105 duration-300 transition-all"
+              />
+            </Link>
+          </motion.div>
+        ))}
       </div>
 
       {/* Sección informativa sobre Jesca */}
       <div className="flex flex-col bg-gray-100 p-8 justify-center items-center">
         <h3 className="text-2xl font-bold mb-4 text-center justify-center">
-          {" "}
           Sometimes being wrong is right
         </h3>
-        <p className="text-lg mb-4 text-center w-1/2">
+        <p className="text-lg mb-4 text-center lg:w-1/2">
           En Jesca, creemos que todas las emociones son válidas y forman parte
           de la experiencia humana. Te invitamos a abrazar tus sentimientos, sin
           vergüenza, y a compartirlos con el mundo. Nuestras prendas están
@@ -81,7 +80,7 @@ export default function Inicio() {
           height={200}
           src="/jesca.jpeg"
           alt="jesca"
-          className="object-cover rounded-lg"
+          className="object-cover rounded-lg shadow-black shadow-lg"
         />
       </div>
     </div>
