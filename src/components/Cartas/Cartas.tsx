@@ -41,14 +41,16 @@ const Cartas = () => {
 
             <div className="p-4">
               <p className="text-lg font-medium text-gray-800">{card.title}</p>
-              <p className="text-lg font-bold text-gray-900 mt-2">${card.price}</p>
+              <p className="text-lg font-bold text-gray-900 mt-2">
+                ${card.price}
+              </p>
               <p className="text-sm text-gray-500 mt-2">Selecciona un talle:</p>
               <div className="mt-3 text-center">
                 <AddToCartButton
                   id={card.id}
                   title={card.title}
                   image={card.image}
-                  price={10499}
+                  price={card.price}
                 />
               </div>
             </div>

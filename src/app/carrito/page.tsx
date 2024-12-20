@@ -59,9 +59,10 @@ const Carrito: React.FC = () => {
         <h1 className="font-bold text-3xl md:text-4xl text-black mb-4 text-center">
           ¡Muchas gracias por tu compra!
         </h1>
-        <p className="text-gray-600 text-lg md:text-xl mb-6">
-          Tu compra ha sido realizada con éxito. Nos encargaremos de todo el
-          proceso de envío.
+        <p className="text-center text-gray-600 text-lg md:text-xl mb-6">
+          Tu compra ha sido realizada con éxito.
+          <br />
+          Envianos el comprobante por WhatsApp para que podamos procesarlo.
         </p>
         <Link
           href="/"
