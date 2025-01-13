@@ -42,17 +42,11 @@ const About = () => {
           {/* Sección derecha: descripción */}
           <div className="w-full md:w-2/3 text-gray-700 space-y-4">
             <p>
-              Jesca es una marca comprometida con la calidad, el estilo y la
-              satisfacción de sus clientes. Desde sus inicios, Jesca ha
-              trabajado para ofrecer productos de alta calidad que representan
-              la autenticidad y la pasión por la moda.
-            </p>
-            <p>
-              Con un enfoque en la sostenibilidad y el diseño moderno, Jesca
-              busca inspirar a cada persona a expresarse a través de su estilo
-              único. Cada prenda es creada con materiales cuidadosamente
-              seleccionados, asegurando una experiencia de uso que combina
-              comodidad y elegancia.
+              Jesca es una marca que invita a que las personas tengan mucha
+              elegancia y moda dentro de lo simple. Entendemos como te sentis y
+              esta bien sentise así, por eso también te invitamos a expresarlo
+              en tu vestimenta. Elegimos Oversize por estas mismas razones,para
+              que te sientas libre como en casa.
             </p>
             <p>
               Únete a nuestra comunidad y descubre cómo Jesca puede ser parte de
