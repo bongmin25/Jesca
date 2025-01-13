@@ -20,7 +20,7 @@ const ButtonMP = ({ cart }: { cart: CartItem[] }) => {
     try {
       setIsCreatingPreference(true);
       const response = await axios.post(
-        "http://localhost:3000/create_preference",
+        "https://jesca-back.vercel.app/create_preference",
         {
           items: cart.map((item) => ({
             id: item.id,
