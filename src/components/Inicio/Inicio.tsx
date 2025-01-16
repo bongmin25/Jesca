@@ -65,7 +65,7 @@ export default function Inicio() {
       {/* Sección informativa sobre Jesca */}
       <div className="flex flex-col bg-gray-100 p-8 justify-center items-center">
         <h3 className="text-2xl font-bold mb-4 text-center justify-center">
-          A veces sentirse mal está bien
+          A veces estar equivocado esta bien
         </h3>
         <p className="text-lg mb-4 text-center lg:w-1/2">
           En Jesca, creemos que todas las emociones son válidas y forman parte
